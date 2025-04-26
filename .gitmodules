@@ -1,0 +1,6 @@
+[submodule "publishing-backend"]
+	path = publishing-backend
+	url = ./publishing-backend/
+[submodule "publishing-frontend"]
+	path = publishing-frontend
+	url = ./publishing-frontend/
