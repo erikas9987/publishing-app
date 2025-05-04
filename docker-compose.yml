@@ -3,21 +3,35 @@ services:
     build:
       context: ./publishing-backend/
       dockerfile: Dockerfile
-    command: npm start
+    command: npm run start:debug
+    env_file:
+      - .env
+    environment:
+      - DOCKER=true
+      - POSTGRES_HOST=database
     volumes:
       - ./publishing-backend:/app
       - /app/node_modules
     ports:
       - "3000:3000"
+      - "9229:9229"
+    user: "node"
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      database:
+        condition: service_healthy
   
   frontend:
     build:
       context: ./publishing-frontend/
       dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
     volumes:
       - ./publishing-frontend:/app
       - /app/node_modules
-    command: npm start
+    command: npm start -- --host 0.0.0.0
 
   database:
     image: postgres:17-alpine
