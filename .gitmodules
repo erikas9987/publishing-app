@@ -1,6 +1,6 @@
 [submodule "publishing-backend"]
 	path = publishing-backend
-	url = ./publishing-backend/
+	url = https://github.com/erikas9987/publishing-backend.git
 [submodule "publishing-frontend"]
 	path = publishing-frontend
-	url = ./publishing-frontend/
+	url = https://github.com/erikas9987/publishing-frontend.git
